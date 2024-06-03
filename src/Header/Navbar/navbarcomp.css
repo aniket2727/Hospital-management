@@ -1,16 +1,11 @@
-
-
-
-
-
 .main-navbar-second h1 {
     font-family: 'Arial', sans-serif; /* Font family for the logo */
-    font-size: 24px; /* Font size for the logo */
+    font-size: 1.5rem; /* Font size for the logo (24px / 16px) */
     font-weight: bolder; /* Bold font weight */
     color: green; /* Color for the logo text */
     text-transform: uppercase; /* Uppercase text for the logo */
-    letter-spacing: 2px; /* Spacing between letters */
-    margin: 0 10px; /* Horizontal margin for spacing */
+    letter-spacing: 0.125rem; /* Spacing between letters (2px / 16px) */
+    margin: 0 0.625rem; /* Horizontal margin for spacing (10px / 16px) */
 }
 
 /* Container for the navbar */
@@ -18,8 +13,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 10px;
-    border-bottom: 1px solid #ccc; /* Subtle bottom border for separation */
+    padding: 0.625rem; /* Padding (10px / 16px) */
+    border-bottom: 0.063rem solid #ccc; /* Subtle bottom border for separation (1px / 16px) */
 }
 
 /* Container for navbar content */
@@ -28,31 +23,59 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    max-width: 1200px;
-    padding: 10px;
+    max-width: 75rem; /* Max width (1200px / 16px) */
+    padding: 0.625rem; /* Padding (10px / 16px) */
 }
 
-
-.main-button-comp button{
-    border-radius:10px;
-    margin: 10px;
+.main-button-comp button {
+    border-radius: 0.625rem; /* Border radius (10px / 16px) */
+    margin: 0.625rem; /* Margin (10px / 16px) */
     border: none;
     font-weight: 800;
+    cursor: pointer;
 }
 
-.main-navbar-second{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1200px; 
-}
-
-
-
-   /* input styleling for componet  */
-
-.main-input-comp input{
-    border: 1px solid black;
-    border-radius:10px;
+.main-input-comp input {
+    border: 0.063rem solid black; /* Border (1px / 16px) */
+    border-radius: 0.625rem; /* Border radius (10px / 16px) */
     font-weight: 800;
 }
+
+/* Default styles */
+.main-button-comp button,
+.main-input-comp input {
+    font-size: 1rem; /* Default font size */
+}
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 600px) {
+    .main-button-comp button{
+        font-size: 0.8rem; /* Smaller font size for smaller screens */
+        width: 3rem;
+    }
+    .main-input-comp input {
+        font-size: 0.8rem; /* Smaller font size for smaller screens */
+        width: 20rem;
+      
+    }
+}
+@media only screen and (max-width: 400px) {
+    .main-button-comp button{
+        font-size: 0.5rem; /* Smaller font size for smaller screens */
+        width: 2rem;
+    }
+    .main-input-comp input {
+        font-size: 0.8rem; /* Smaller font size for smaller screens */
+        width: 15rem;
+      
+    }
+}
+
+/* Media query for larger screens */
+@media only screen and (min-width: 1200px) {
+    .main-button-comp button,
+    .main-input-comp input {
+        font-size: 1.2rem; /* Larger font size for larger screens */
+    }
+}
+

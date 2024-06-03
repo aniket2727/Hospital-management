@@ -25,10 +25,10 @@ const NavbarComponents: React.FC = () => {
         <div className="main-navbar-comp">
              <div className="main-navbar-second">
                    <h1>Healcare.com</h1>
-                   <Inputscomponets  inputsprops={{height:'30px',width:'450px' ,innertext:'search'}}/>
-                   <ButtonsComponets data={{height:'30px',width:'80px',backgroundColor:'green',textinput:"login"}} onClick={handleLoginOperations}/>
-                   <ButtonsComponets data={{height:'30px',width:'80px',backgroundColor:'green',textinput:"menu"}} onClick={handleMenuOperations}/>
-                   <ButtonsComponets data={{height:'30px',width:'80px',backgroundColor:'green',textinput:"about"}} onClick={handleAboutOperations}/>
+                   <Inputscomponets inputsprops={{ height: '1.875rem', width: '28.125rem', innertext: 'search' }} />
+                   <ButtonsComponets data={{ height: '1.875rem', width: '5rem', backgroundColor: '884dff', textinput: "login" }} onClick={handleLoginOperations} />
+                   <ButtonsComponets data={{ height: '1.875rem', width: '5rem', backgroundColor: '4d79ff', textinput: "menu" }} onClick={handleMenuOperations} />
+                   <ButtonsComponets data={{ height: '1.875rem', width: '5rem', backgroundColor: '4d79ff', textinput: "about" }} onClick={handleAboutOperations} />
              </div>   
               
         </div>
