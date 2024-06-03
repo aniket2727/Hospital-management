@@ -20,7 +20,7 @@ const ButtonsComponets:React.FC<buttoncomponetsprops>=({data,onClick})=>{
 
     // state variables
     const [heigth,setHeight]=useState(data.height || '50px');
-    const [width,setWidth]=useState(data.width || '50px');
+    const [width,setWidth]=useState(data.width || '10rm');
     const [backgroundColor,setBackgroundColor]=useState(data.backgroundColor || '')
     const[textinput,setTextinput]=useState(data.textinput || 'button')
 
