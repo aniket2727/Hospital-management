@@ -1,0 +1,58 @@
+
+
+
+
+
+.main-navbar-second h1 {
+    font-family: 'Arial', sans-serif; /* Font family for the logo */
+    font-size: 24px; /* Font size for the logo */
+    font-weight: bolder; /* Bold font weight */
+    color: green; /* Color for the logo text */
+    text-transform: uppercase; /* Uppercase text for the logo */
+    letter-spacing: 2px; /* Spacing between letters */
+    margin: 0 10px; /* Horizontal margin for spacing */
+}
+
+/* Container for the navbar */
+.main-navbar-comp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc; /* Subtle bottom border for separation */
+}
+
+/* Container for navbar content */
+.main-navbar-second {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    padding: 10px;
+}
+
+
+.main-button-comp button{
+    border-radius:10px;
+    margin: 10px;
+    border: none;
+    font-weight: 800;
+}
+
+.main-navbar-second{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px; 
+}
+
+
+
+   /* input styleling for componet  */
+
+.main-input-comp input{
+    border: 1px solid black;
+    border-radius:10px;
+    font-weight: 800;
+}
