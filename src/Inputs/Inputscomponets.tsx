@@ -6,6 +6,7 @@ interface InputsPropsData {
         width: string;
         innertext: string;
     };
+    
 }
 
 const Inputscomponets: React.FC<InputsPropsData> = ({ inputsprops }) => {
@@ -51,7 +52,7 @@ const Inputscomponets: React.FC<InputsPropsData> = ({ inputsprops }) => {
       },1000)
 
       return () => {
-        if (timeoutId.current) {
+      if (timeoutId.current) {
           clearTimeout(timeoutId.current);
       }
   };
