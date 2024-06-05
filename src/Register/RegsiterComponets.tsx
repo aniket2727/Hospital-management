@@ -1,6 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { validateEmail } from '../HelperFuntions/EmailValidations';
 import { validatePassword } from '../HelperFuntions/PasswordValidations';
+import { validName } from '../HelperFuntions/NameValidations';
 
 
 interface FormData {
@@ -16,6 +17,7 @@ const RegisterComponents: React.FC = () => {
   // Validation state
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid,setIsPasswordValid]=useState(true);
+  const[isNameValid,setIsNameValid]=useState(true);
 
   const handleFormData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -32,6 +34,10 @@ const RegisterComponents: React.FC = () => {
 
     const passwordValidationResult=validatePassword(formData.userPassword);
     setIsPasswordValid(passwordValidationResult);
+
+    const nameValidationResult=validName(formData.userName);
+    setIsNameValid(nameValidationResult);
+    
     
 
     if (emailValidationResult) {
@@ -57,6 +63,7 @@ const RegisterComponents: React.FC = () => {
               value={formData.userName}
               className="w-full px-3 py-2 mt-1 text-sm border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             />
+             {!isNameValid && <span  className="text-red-500 text-sm">Name is invalid</span>}
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">UserEmail:</label>
