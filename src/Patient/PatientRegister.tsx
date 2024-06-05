@@ -3,6 +3,8 @@
 import React, { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
 import { validName } from '../HelperFuntions/NameValidations';
+import { AgeValidations } from '../HelperFuntions/AgeValidations';
+
 interface UserFormDataType {
   patientName: string;
   patientAge: string;
@@ -28,6 +30,9 @@ const PatientRegister: React.FC = () => {
 
   //  state management 
   const[isNameValid,setIsNameValid]=useState(true);
+  const[isAgeValid,setisAgeValid]=useState(true);
+  const[isDoctorNameValid,setisDoctotNameValid]=useState(true);
+  const[isRelativeNameValid,setisRelativeNameValid]=useState(true);
 
   const handleData = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -38,8 +43,20 @@ const PatientRegister: React.FC = () => {
   };
 
   const handleFormData = (e: FormEvent) => {
+
     const nameValidResult=validName(2)(formData.patientName);
     setIsNameValid(nameValidResult);
+
+    const ageValidationResult=AgeValidations(110,Number(formData.patientAge))(0);
+    setisAgeValid(ageValidationResult);
+
+    const doctorValidation =validName(2)(formData.patientName);
+    setisDoctotNameValid(doctorValidation);
+
+    const relatibeNameValidation=validName(2)(formData.relativeName);
+    setisRelativeNameValid(relatibeNameValidation);
+
+
     e.preventDefault();
     console.log(formData); // For debugging purposes
   };
@@ -76,6 +93,7 @@ const PatientRegister: React.FC = () => {
               onChange={handleData}
               className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             />
+            {!isAgeValid && <span className='text-red-500 text-small'>Age is not valid</span>}
           </div>
 
           {/* Patient gender input box */}
@@ -131,6 +149,7 @@ const PatientRegister: React.FC = () => {
               onChange={handleData}
               className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             />
+             { !isDoctorNameValid && <span className='text-red-500 text-small' >Doctor name is unvalid </span> }
           </div>
 
           {/* Relative name input box */}
@@ -142,8 +161,8 @@ const PatientRegister: React.FC = () => {
               name="relativeName"
               value={formData.relativeName}
               onChange={handleData}
-              className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-            />
+              className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"/>
+              {!isRelativeNameValid && <span className='text-red-500  text-small'> Relative name valid</span> }
           </div>
 
           {/* Relative status select box */}
