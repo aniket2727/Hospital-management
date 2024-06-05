@@ -187,3 +187,4 @@ const PatientRegister: React.FC = () => {
 };
 
 export default PatientRegister;
+ 
