@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
-
+import { validateEmail } from '../HelperFuntions/EmailValidations';
 interface FormData {
   userName: string;
   userEmail: string;
@@ -7,7 +7,11 @@ interface FormData {
 }
 
 const RegisterComponents: React.FC = () => {
+  // Form data state
   const [formData, setFormData] = useState<FormData>({ userName: '', userEmail: '', userPassword: '' });
+
+  // Validation state
+  const [isEmailValid, setIsEmailValid] = useState(true);
 
   const handleFormData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -19,15 +23,22 @@ const RegisterComponents: React.FC = () => {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    console.log(formData);
+    const emailValidationResult = validateEmail(formData.userEmail);
+    setIsEmailValid(emailValidationResult);
+
+    if (emailValidationResult) {
+      console.log('Form data:', formData);
+    } else {
+      console.log('Invalid email address');
+    }
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
-        <h1 className="text-3xl font-bold text-center">Welcome to Healthcare.com</h1>
-        <p className="text-center text-gray-600">Register Here</p>
         <form onSubmit={handleSubmit} className="space-y-4">
+          <h1 className="text-3xl font-bold text-center">Welcome to Healthcare.com</h1>
+          <p className="text-center text-gray-600">Register Here</p>
           <div>
             <label className="block text-sm font-medium text-gray-700">Username:</label>
             <input
@@ -49,6 +60,7 @@ const RegisterComponents: React.FC = () => {
               value={formData.userEmail}
               className="w-full px-3 py-2 mt-1 text-sm border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             />
+            {!isEmailValid && <p className="text-red-500 text-sm">Invalid email address</p>}
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">Password:</label>
@@ -68,6 +80,7 @@ const RegisterComponents: React.FC = () => {
             Register
           </button>
         </form>
+      
       </div>
     </div>
   );
