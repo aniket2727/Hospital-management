@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { validateEmail } from '../HelperFuntions/EmailValidations';
 import { validatePassword } from '../HelperFuntions/PasswordValidations';
 import { validName } from '../HelperFuntions/NameValidations';
+// import { debounce } from '../HelperFuntions/Debounsing';
 
 
 interface FormData {
@@ -27,8 +28,10 @@ const RegisterComponents: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit =(e: FormEvent) => {
     e.preventDefault();
+
+    // appiled curring and the closure here
     const emailValidationResult = validateEmail(formData.userEmail);
     setIsEmailValid(emailValidationResult);
 
@@ -38,14 +41,15 @@ const RegisterComponents: React.FC = () => {
     const nameValidationResult=validName(2)(formData.userName);
     setIsNameValid(nameValidationResult);
     
-    
-
     if (emailValidationResult) {
       console.log('Form data:', formData);
     } else {
       console.log('Invalid email address');
     }
   };
+
+  // Debounce the handleSubmit function with a 500ms delay
+//   const debouncedHandleSubmit = debounce(handleSubmit, 500);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">

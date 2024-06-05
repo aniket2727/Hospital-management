@@ -10,7 +10,6 @@ const Useform = (initialvalues: useformdata) => {
 
     const handlechange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-
         setValues({
             ...values,
             [name]: value,
