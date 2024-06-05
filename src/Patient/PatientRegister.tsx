@@ -2,7 +2,7 @@
 
 import React, { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
-
+import { validName } from '../HelperFuntions/NameValidations';
 interface UserFormDataType {
   patientName: string;
   patientAge: string;
@@ -26,6 +26,9 @@ const PatientRegister: React.FC = () => {
     dName: ''
   });
 
+  //  state management 
+  const[isNameValid,setIsNameValid]=useState(true);
+
   const handleData = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -35,6 +38,8 @@ const PatientRegister: React.FC = () => {
   };
 
   const handleFormData = (e: FormEvent) => {
+    const nameValidResult=validName(2)(formData.patientName);
+    setIsNameValid(nameValidResult);
     e.preventDefault();
     console.log(formData); // For debugging purposes
   };
@@ -57,6 +62,7 @@ const PatientRegister: React.FC = () => {
               onChange={handleData}
               className="w-full px-3 py-2 mt-1 border rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             />
+            {!isNameValid && <span className='text-red-500 text-small'>Name is not valid</span>}
           </div>
 
           {/* Patient age input box */}
