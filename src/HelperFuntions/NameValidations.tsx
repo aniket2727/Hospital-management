@@ -5,11 +5,17 @@
 // name lenght must be greater than 2 and does not contains any number 
 
 
-export const validName=(name:string):boolean=>{
-    return name.length>3 && !checkNumberIsPresent(name);
+// closure method is used here
+
+
+export const validName=(minLenght:number)=>{
+
+     return (name:string):boolean=>{ 
+        return name.length>minLenght&& !checkNumberIsPresent(name);   // return true or false ;
+     } 
 }
 
 
 const checkNumberIsPresent=(str:string):boolean=>{
-    return /\d/.test(str); // Check if any digit is present in the string
+    return /\d/.test(str); // Check if any digit is present in the string     return true or false ;
 }

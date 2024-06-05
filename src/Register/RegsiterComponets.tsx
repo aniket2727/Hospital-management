@@ -35,7 +35,7 @@ const RegisterComponents: React.FC = () => {
     const passwordValidationResult=validatePassword(formData.userPassword);
     setIsPasswordValid(passwordValidationResult);
 
-    const nameValidationResult=validName(formData.userName);
+    const nameValidationResult=validName(2)(formData.userName);
     setIsNameValid(nameValidationResult);
     
     
