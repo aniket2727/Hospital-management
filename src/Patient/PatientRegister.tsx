@@ -4,6 +4,7 @@ import React, { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
 import { validName } from '../HelperFuntions/NameValidations';
 import { AgeValidations } from '../HelperFuntions/AgeValidations';
+import { useCallback,useMemo } from 'react';
 
 interface UserFormDataType {
   patientName: string;
@@ -28,38 +29,50 @@ const PatientRegister: React.FC = () => {
     dName: ''
   });
 
+
+
   //  state management 
   const[isNameValid,setIsNameValid]=useState(true);
   const[isAgeValid,setisAgeValid]=useState(true);
   const[isDoctorNameValid,setisDoctotNameValid]=useState(true);
   const[isRelativeNameValid,setisRelativeNameValid]=useState(true);
 
-  const handleData = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleData = useCallback((e: ChangeEvent<HTMLInputElement> |ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData({
-      ...formData,
-      [name]: value,
+        ...formData,
+        [name]: value,
     });
-  };
+}, [formData]);
 
-  const handleFormData = (e: FormEvent) => {
+const nameValidationMemo = useMemo(() => validName(2)(formData.patientName), [formData.patientName]);
+const ageValidationMemo = useMemo(() => AgeValidations(110, Number(formData.patientAge))(0), [formData.patientAge]);
+const doctorValidationMemo = useMemo(() => validName(2)(formData.doctorName), [formData.doctorName]);
+const relativeNameValidationMemo = useMemo(() => validName(2)(formData.relativeName), [formData.relativeName]);
 
-    const nameValidResult=validName(2)(formData.patientName);
+
+const handleFormData = useCallback((e: FormEvent) => {
+    e.preventDefault();
+    
+    const nameValidResult = nameValidationMemo;
     setIsNameValid(nameValidResult);
 
-    const ageValidationResult=AgeValidations(110,Number(formData.patientAge))(0);
+    const ageValidationResult = ageValidationMemo;
     setisAgeValid(ageValidationResult);
 
-    const doctorValidation =validName(2)(formData.patientName);
+    const doctorValidation = doctorValidationMemo;
     setisDoctotNameValid(doctorValidation);
 
-    const relatibeNameValidation=validName(2)(formData.relativeName);
-    setisRelativeNameValid(relatibeNameValidation);
+    const relativeNameValidation = relativeNameValidationMemo;
+    setisRelativeNameValid(relativeNameValidation);
 
-
-    e.preventDefault();
     console.log(formData); // For debugging purposes
-  };
+}, [nameValidationMemo, ageValidationMemo, doctorValidationMemo, relativeNameValidationMemo, formData]);
+
+
+
+
+
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
