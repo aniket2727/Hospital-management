@@ -32,7 +32,7 @@ const RegisterComponents: React.FC = () => {
     const emailValidationResult = validateEmail(formData.userEmail);
     setIsEmailValid(emailValidationResult);
 
-    const passwordValidationResult=validatePassword(formData.userPassword);
+    const passwordValidationResult=validatePassword(8)(formData.userPassword);
     setIsPasswordValid(passwordValidationResult);
 
     const nameValidationResult=validName(2)(formData.userName);
