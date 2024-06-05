@@ -1,3 +1,6 @@
+// this code is wriiten in typescript and the react by dankcoder aniket
+
+
 import React from 'react';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
@@ -6,6 +9,7 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import NavbarComponets from './Header/Navbar/Navbarcompontes'
 import LoginComponets from './Login/LoginComponets';
 import RegisterComponets from './Register/RegsiterComponets';
+import PatientRegister from './Patient/PatientRegister';
 
 
 const Pagenotfound=()=>{
@@ -25,6 +29,7 @@ function App() {
            <Routes>
             <Route path='/login' element={<LoginComponets/>}/>
             <Route path='/register' element={<RegisterComponets/>}/>
+            <Route path='/patient/register' element={<PatientRegister/>}/>
             <Route path='*'  element={<Pagenotfound/>}/>
            </Routes>
          </BrowserRouter>

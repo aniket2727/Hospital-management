@@ -1,3 +1,7 @@
+
+// this code is wriiten in typescript and the react by dankcoder aniket
+
+
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import { validateEmail } from '../HelperFuntions/EmailValidations';
 import { validatePassword } from '../HelperFuntions/PasswordValidations';
