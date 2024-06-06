@@ -1,45 +1,37 @@
-
-
-
-
-//this code is written by aniket kadam
+import React from 'react';
 
 /**
- * this is the home funtion that display the iniatl infomation about the web application
- * Various block componets are present in this page which are provide gateways to navigate throughout the page
+ * This is the home function that displays the initial information about the web application.
+ * Various block components are present on this page which provide gateways to navigate throughout the page.
  */
 
-
-// interface 
+// Interface
 interface HomepageDataType {
     [key: string]: [string, string];
 }
 
+const HomepageComponents: React.FC = () => {
+    const homepageData: HomepageDataType = {
+        "New Entry Patient": ["Click here to add new entry", "Add"],
+        "Search Patient Details": ["Click here to search patient", "Search"],
+        "Search Staff": ["Click here to search staff", "Staff Search"],
+        "Change Status Of Patient": ["Click here to change patient status", "Change Status"],
+        "Discharge Status": ["Click here to discharge patient", "Discharge"]
+    };
 
-const HomepageComponets=()=>{
-
-    const HomepageData:HomepageDataType={
-        "New Entry Patient":["click here to add new entry","Add"],
-        "Search Pateint Deatials":["click here to search patient","Search"],
-        "Search Staff":["click here to search staff","staff search"],
-        "Change Status Of Patient":["click here change patient status","change status"],
-        "Dischage Status":["click here to discharge patient","dischage"]
-
-    }
-    return(
-        <div>
-            {
-                Object.entries(HomepageData).map(([key,values])=>(
-                    <div key={key}>
-                        <h1>{key}</h1>
-                        <h2>{values[0]}</h2>
-                        <button>{values[1]}</button>
-                    </div>    
-                ))
-            } 
+    return (
+        <div className="p-6 space-y-4">
+            {Object.entries(homepageData).map(([key, values]) => (
+                <div key={key} className="border p-4 rounded-lg shadow-md">
+                    <h1 className="text-2xl font-bold mb-2">{key}</h1>
+                    <h2 className="text-lg mb-4">{values[0]}</h2>
+                    <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700">
+                        {values[1]}
+                    </button>
+                </div>
+            ))}
         </div>
-    )
-}
+    );
+};
 
-
-export default HomepageComponets;
+export default HomepageComponents;
