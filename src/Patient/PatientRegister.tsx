@@ -1,4 +1,13 @@
 // src/PatientRegister.tsx
+// this code is written by aniket kadam
+
+
+/**
+ * this componets is used to create form for the patient data and call api that connect with the mongo db
+ * @param formData stores the data from form into the useState hook and send to backend with the apis
+ * @param isNameValid.isAgeValid.isDoctorNameValid.isRelativeNameValid   is state management hooks 
+ */
+
 
 import React, { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';

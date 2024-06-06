@@ -1,5 +1,4 @@
-// this code is wriiten in typescript and the react by dankcoder aniket
-
+// this code is written in typescript and the react  by aniket kadam
 
 import React from 'react';
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
